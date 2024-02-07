@@ -4,7 +4,7 @@
 #include <vector>
 #include "Triangles.h"
 #include <string>
-
+// Class to read Files .stl and .obj.
 class FileReader {
 public:
     FileReader();

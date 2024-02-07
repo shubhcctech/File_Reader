@@ -18,29 +18,29 @@ int main() {
     switch(choice){
         case 1: {
             FileReader fileReader;
-            Triangulations triangulation = fileReader.stlReader("stl_files\\cube.stl");
+            Triangulations triangulation = fileReader.stlReader("resources\\cube.stl");
             FileWriter filewriter;
-            filewriter.stlWrite("text_files\\outputSTL.txt",triangulation); 
+            filewriter.stlWrite("output\\outputSTL.txt",triangulation); 
             break;
         }
         case 2:{
             FileReader fileReader;
-            Triangulations triangulation = fileReader.objReader("obj_files\\cubeInput.obj");
+            Triangulations triangulation = fileReader.objReader("resources\\cubeInput.obj");
             FileWriter filewriter;
-            filewriter.objWrite("text_files\\outputOBJ.txt",triangulation); 
+            filewriter.objWrite("output\\outputOBJ.txt",triangulation); 
             break;
         }
         case 3:{
             FileReader fileReader;
-            Triangulations triangulation = fileReader.objReader("obj_files\\cubeInput.obj");
+            Triangulations triangulation = fileReader.objReader("resources\\cubeInput.obj");
             FileWriter fileWriter;
-            fileWriter.objToStl("stl_files/objToStl.stl",triangulation);
+            fileWriter.objToStl("output\\objToStl.stl",triangulation);
         }
         case 4:{
             FileReader fileReader;
-            Triangulations triangulation = fileReader.stlReader("stl_files\\cube.stl");
+            Triangulations triangulation = fileReader.stlReader("resources\\cube.stl");
             FileWriter fileWriter;
-            fileWriter.stlToObj("obj_files/stlToObj.obj",triangulation);
+            fileWriter.stlToObj("output\\stlToObj.obj",triangulation);
         }
     }
 
