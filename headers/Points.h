@@ -1,6 +1,8 @@
 #ifndef POINTS_H
 #define POINTS_H
+
 // Coordinates for each point.
+
 class Points {
 public:
 

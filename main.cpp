@@ -17,6 +17,9 @@ int main() {
     std::cin>>choice;
     switch(choice){
         case 1: {
+
+            // .stl to .txt 
+
             FileReader fileReader;
             Triangulations triangulation = fileReader.stlReader("resources\\cube.stl");
             FileWriter filewriter;
@@ -24,6 +27,9 @@ int main() {
             break;
         }
         case 2:{
+
+            //.obj to .txt
+
             FileReader fileReader;
             Triangulations triangulation = fileReader.objReader("resources\\cubeInput.obj");
             FileWriter filewriter;
@@ -31,12 +37,18 @@ int main() {
             break;
         }
         case 3:{
+
+            // .obj to .stl
+
             FileReader fileReader;
             Triangulations triangulation = fileReader.objReader("resources\\cubeInput.obj");
             FileWriter fileWriter;
             fileWriter.objToStl("output\\objToStl.stl",triangulation);
         }
         case 4:{
+            
+            // .stl tp .obj 
+
             FileReader fileReader;
             Triangulations triangulation = fileReader.stlReader("resources\\cube.stl");
             FileWriter fileWriter;

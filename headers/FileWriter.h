@@ -3,7 +3,9 @@
 #include <string>
 #include "Triangulations.h"
 #include"Points.h"
+
 // Writes .stl and .obj to txt as well as interconvrsion.
+
 class FileWriter
 {
     public:
