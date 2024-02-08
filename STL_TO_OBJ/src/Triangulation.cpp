@@ -8,7 +8,9 @@ Triangulations::Triangulations()
 Triangulations::~Triangulations()
 {
 }
-
+std::vector<Point3D> &Triangulations::uniqueNormalPoints(){
+    return mUniqueNormalPoints;
+}
 
 
 std::vector<Point3D> &Triangulations::uniquePoints()

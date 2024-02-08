@@ -17,13 +17,17 @@ Triangulations OBJToSTL_Writer::objToStl(const std::string &filePathName, Triang
     {
         throw std::runtime_error("Error opening file for writing: " + filePathName);
     }
+    std::vector<Point3D> &pointsNormal = triangulation.normalPoints();
     std::vector<Point3D> &points = triangulation.uniquePoints();
     std::vector<Triangle> &triangles = triangulation.triangles();
+    std::vector<Triangle> &trianglesNormal = triangulation.trianglesNormal();
+    
+    
     outputFile << "solid" << std::endl;
 
     for (const Triangle &triangles : triangles)
     {
-        outputFile << " facet normal" << std::endl;
+        outputFile << " facet normal " <<pointsNormal[ triangles.indexNormal()-1].X()<<" "<<pointsNormal[ triangles.indexNormal()-1].Y()<<" "<<pointsNormal[ triangles.indexNormal()-1].Z()<<std::endl;
         outputFile << "  outer loop" << std::endl;
         outputFile << " vertex " << points[triangles.index1() - 1].X() << " " << points[triangles.index1() - 1].Y() << " " << points[triangles.index1() - 1].Z() << std::endl;
         outputFile << " vertex " << points[triangles.index2() - 1].X() << " " << points[triangles.index2() - 1].Y() << " " << points[triangles.index2() - 1].Z() << std::endl;

@@ -20,3 +20,10 @@ std::vector<Triangle> &Triangulations::triangles()
 {
     return mTriangles;
 }
+std::vector<Point3D> &Triangulations::normalPoints(){
+    return mNormalPoints;
+}
+std::vector<Triangle> &Triangulations::trianglesNormal()
+{
+    return mTrianglesNormal;
+}

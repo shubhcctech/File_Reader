@@ -53,12 +53,13 @@ Triangulations OBJ_Reader::objReader(const std::string &fileNamePath)
             std::string tempString;
             std::istringstream vertexStream(lineObj);
 
-            vertexStream >> tempString >> fCoordinate >> sCoordinate >> tCoordinate;
-            int index1 = fCoordinate[0] - 48;
-            int index2 = sCoordinate[0] - 48;
-            int index3 = tCoordinate[0] - 48;
+            vertexStream >> tempString >> fCoordinate ;
+            std::cout<<fCoordinate<<std::endl;
+            // int index1 = fCoordinate[0] - 48;
+            // int index2 = sCoordinate[0] - 48;
+            // int index3 = tCoordinate[0] - 48;
 
-            trianglesObj.push_back(Triangle(index1, index2, index3));
+            // trianglesObj.push_back(Triangle(index1, index2, index3));
         }
     }
     triangulationObj.uniquePoints() = pointObj3D;

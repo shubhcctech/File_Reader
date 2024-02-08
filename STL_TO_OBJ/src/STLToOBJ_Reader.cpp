@@ -25,7 +25,8 @@ Triangulations STLToOBJ_Reader::stlReader(const std::string &fileNamePath)
     std::vector<Point3D> points;
     std::vector<Triangle> triangles;
     std::map<Point3D, int> pointMap;
-
+    std::map<Point3D, int> pointNormalMap;
+    int normalIndex = 0;
     int count = 0;
     int index1;
     int index2;
@@ -33,6 +34,24 @@ Triangulations STLToOBJ_Reader::stlReader(const std::string &fileNamePath)
     std::string line;
     while (std::getline(inputFile, line))
     {
+        if (line.find("facet normal") != std::string::npos)
+        {
+            double fCoordinate;
+            double sCoordinate;
+            double tCoordinate;
+            std::string token;
+            std::istringstream vertexStream(line);
+            vertexStream >> token >>token>> fCoordinate >> sCoordinate >> tCoordinate;
+            Point3D pointNormal3D(fCoordinate, sCoordinate, tCoordinate);
+
+            auto iterator = pointNormalMap.find(pointNormal3D);
+            if (iterator == pointNormalMap.end())
+            {
+                pointNormalMap[pointNormal3D] = triangulation.uniqueNormalPoints().size();
+                triangulation.uniqueNormalPoints().push_back(pointNormal3D);
+            }
+            normalIndex = pointNormalMap[pointNormal3D]+1;
+        }
         if (line.find("vertex") != std::string::npos)
         {
             double xCoordinate;
@@ -49,6 +68,7 @@ Triangulations STLToOBJ_Reader::stlReader(const std::string &fileNamePath)
                 pointMap[point3D] = triangulation.uniquePoints().size();
                 triangulation.uniquePoints().push_back(point3D);
             }
+        
 
             if (count == 0)
             {
@@ -64,7 +84,8 @@ Triangulations STLToOBJ_Reader::stlReader(const std::string &fileNamePath)
             {
                 index3 = pointMap[point3D];
                 count++;
-                triangulation.triangles().push_back(Triangle(index1, index2, index3));
+                triangulation.triangles().push_back(Triangle(index1, index2, index3,normalIndex));
+                
                 count = 0;
             }
         }
