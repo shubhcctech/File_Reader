@@ -1,6 +1,6 @@
+#include <iostream>
 #include"headers/STLToOBJ_Reader.h"
 #include"headers/STLToOBJ_Writer.h"
-#include <iostream>
 
 int main(){
             STLToOBJ_Reader fileReader;

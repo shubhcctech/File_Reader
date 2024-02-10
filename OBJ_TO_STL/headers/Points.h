@@ -1,5 +1,4 @@
-#ifndef POINTS_H
-#define POINTS_H
+#pragma once
 
 // Coordinates for each point.
 
@@ -9,12 +8,10 @@ public:
     Point3D();
     Point3D(double xCoordinate, double yCoordinate, double zCoordinate);
     ~Point3D();
-
     double X() const;
     double Y() const;
     double Z() const;
     bool operator<(const Point3D &pointOther) const;
-
 
 private:
     double mX;
@@ -22,4 +19,3 @@ private:
     double mZ;
 };
 
-#endif // POINTS_H

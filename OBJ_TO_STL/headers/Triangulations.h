@@ -1,10 +1,10 @@
-#ifndef TRIANGULATIONS_H
-#define TRIANGULATIONS_H
+#pragma once
 
-#include"Triangles.h"
 #include<vector>
+#include"Triangles.h"
 
 class Triangulations {
+
     public:
         Triangulations();
         ~Triangulations();
@@ -13,15 +13,11 @@ class Triangulations {
         std::vector<Triangle> &triangles();
         std::vector<Triangle> &trianglesNormal();
 
-
     private :
         std::vector<Point3D> mNormalPoints;
         std::vector<Point3D> mUniquePoints;
         std::vector<Triangle> mTriangles;
         std::vector<Triangle> mTrianglesNormal;
         
-
-
 };
 
-#endif 

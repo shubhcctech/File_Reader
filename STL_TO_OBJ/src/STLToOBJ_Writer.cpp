@@ -1,7 +1,7 @@
-#include "../headers/STLToOBJ_Writer.h"
 #include <fstream>
 #include <iostream>
-#include"../headers/Triangulations.h"
+#include "../headers/STLToOBJ_Writer.h"
+#include "../headers/Triangulations.h"
 #include "../headers/Triangles.h"
 #include "../headers/Points.h"
 
@@ -12,10 +12,10 @@ STLToOBJ_Writer::~STLToOBJ_Writer()
 {
 }
 
-//Reads and writes stl fileinto txt.
+// Reads and writes stl fileinto txt.
 Triangulations STLToOBJ_Writer::stlObjWrite(const std::string &filePathName, Triangulations &triangulation)
 {
-   
+
     std::ofstream outputFile(filePathName);
     if (!outputFile.is_open())
     {
@@ -31,20 +31,19 @@ Triangulations STLToOBJ_Writer::stlObjWrite(const std::string &filePathName, Tri
 
         outputFile << " v " << points.X() << " " << points.Y() << " " << points.Z() << std::endl;
     }
-      outputFile << "" << std::endl;
-    for(int i=0;i<normals.size();i++){
-        outputFile<<"vn "<<normals[i].X()<<" "<<normals[i].Y()<<" "<<normals[i].Z()<<std::endl;
+    outputFile << "" << std::endl;
+    for (int i = 0; i < normals.size(); i++)
+    {
+        outputFile << "vn " << normals[i].X() << " " << normals[i].Y() << " " << normals[i].Z() << std::endl;
     }
     for (const Triangle &triangles : triangles)
     {
-        outputFile << "f " << triangles.index1()+1 << "//"<<triangles.indexNormal()
-                   << " " << triangles.index2()+1<< "//"<<triangles.indexNormal()
-                   << " " << triangles.index3()+1<< "//" << triangles.indexNormal()<< std::endl;
+        outputFile << "f " << triangles.index1() + 1 << "//" << triangles.indexNormal()
+                   << " " << triangles.index2() + 1 << "//" << triangles.indexNormal()
+                   << " " << triangles.index3() + 1 << "//" << triangles.indexNormal() << std::endl;
     }
 
     outputFile.close();
     std::cout << "Points written into Obj File" << std::endl;
     return triangulation;
 }
-
-

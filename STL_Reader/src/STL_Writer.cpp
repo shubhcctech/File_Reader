@@ -1,6 +1,6 @@
-#include "../headers/STL_Writer.h"
 #include <fstream>
 #include <iostream>
+#include "../headers/STL_Writer.h"
 
 STL_Writer::STL_Writer()
 {
@@ -10,7 +10,8 @@ STL_Writer::~STL_Writer()
 }
 
 //Reads and writes stl fileinto txt.
-Triangulations STL_Writer::stlWrite(const std::string &filePathName, Triangulations &triangulation)
+
+Triangulations &STL_Writer::stlWrite(const std::string &filePathName, Triangulations &triangulation)
 {
     std::ofstream outputFile(filePathName);
     if (!outputFile.is_open())

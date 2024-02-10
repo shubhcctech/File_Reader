@@ -1,8 +1,8 @@
 #pragma once
-#include"Triangulations.h"
+#include <string>
 #include <vector>
 #include "Triangles.h"
-#include <string>
+#include"Triangulations.h"
 
 // Class to read Files .stl and .obj.
 
@@ -11,7 +11,5 @@ public:
     OBJ_Reader();
     ~OBJ_Reader();
     Triangulations objReader(const std::string& fileNamePath);
-    
-    
 };
 

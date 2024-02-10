@@ -1,23 +1,22 @@
-#ifndef TRIANGULATIONS_H
-#define TRIANGULATIONS_H
+#pragma once
 
-#include"Triangles.h"
-#include<vector>
+#include <vector>
+#include "Triangles.h"
 
-class Triangulations {
-    public:
-        Triangulations();
-        ~Triangulations();
+// To increase the efficiency .
 
-        std::vector<Point3D> &uniquePoints();
-        std::vector<Triangle> &triangles();
+class Triangulations
+{
+public:
 
+    static Triangulations &getInstance();
+    std::vector<Point3D> &uniquePoints();
+    std::vector<Triangle> &triangles();
 
-    private :
-        std::vector<Point3D> mUniquePoints;
-        std::vector<Triangle> mTriangles;
+private:
 
-
+    Triangulations();
+    std::vector<Point3D> mUniquePoints;
+    std::vector<Triangle> mTriangles;
+    Triangulations(const Triangulations &obj) = delete;
 };
-
-#endif 

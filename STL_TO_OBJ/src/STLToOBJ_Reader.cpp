@@ -1,27 +1,31 @@
-#include "../headers/STLToOBJ_Reader.h"
-#include "../headers/Triangles.h"
 #include <iostream>
 #include <fstream>
 #include <sstream>
 #include <vector>
 #include <map>
+#include "../headers/STLToOBJ_Reader.h"
+#include "../headers/Triangles.h"
 
 // Constructor
+
 STLToOBJ_Reader::STLToOBJ_Reader() {}
+
 // Destructor
+
 STLToOBJ_Reader::~STLToOBJ_Reader() {}
 
 // Reads stl File.
+
 Triangulations STLToOBJ_Reader::stlReader(const std::string &fileNamePath)
 {
-  std::ifstream inputFile(fileNamePath);
+    std::ifstream inputFile(fileNamePath);
     Triangulations triangulation;
 
     if (!inputFile.is_open())
     {
         std::cerr << "Error opening file: " << fileNamePath << std::endl;
     }
-    //Specify Point dimension
+    // Specify Point dimension
     std::vector<Point3D> points;
     std::vector<Triangle> triangles;
     std::map<Point3D, int> pointMap;
@@ -41,7 +45,7 @@ Triangulations STLToOBJ_Reader::stlReader(const std::string &fileNamePath)
             double tCoordinate;
             std::string token;
             std::istringstream vertexStream(line);
-            vertexStream >> token >>token>> fCoordinate >> sCoordinate >> tCoordinate;
+            vertexStream >> token >> token >> fCoordinate >> sCoordinate >> tCoordinate;
             Point3D pointNormal3D(fCoordinate, sCoordinate, tCoordinate);
 
             auto iterator = pointNormalMap.find(pointNormal3D);
@@ -50,7 +54,7 @@ Triangulations STLToOBJ_Reader::stlReader(const std::string &fileNamePath)
                 pointNormalMap[pointNormal3D] = triangulation.uniqueNormalPoints().size();
                 triangulation.uniqueNormalPoints().push_back(pointNormal3D);
             }
-            normalIndex = pointNormalMap[pointNormal3D]+1;
+            normalIndex = pointNormalMap[pointNormal3D] + 1;
         }
         if (line.find("vertex") != std::string::npos)
         {
@@ -68,7 +72,6 @@ Triangulations STLToOBJ_Reader::stlReader(const std::string &fileNamePath)
                 pointMap[point3D] = triangulation.uniquePoints().size();
                 triangulation.uniquePoints().push_back(point3D);
             }
-        
 
             if (count == 0)
             {
@@ -84,8 +87,8 @@ Triangulations STLToOBJ_Reader::stlReader(const std::string &fileNamePath)
             {
                 index3 = pointMap[point3D];
                 count++;
-                triangulation.triangles().push_back(Triangle(index1, index2, index3,normalIndex));
-                
+                triangulation.triangles().push_back(Triangle(index1, index2, index3, normalIndex));
+
                 count = 0;
             }
         }
@@ -94,4 +97,3 @@ Triangulations STLToOBJ_Reader::stlReader(const std::string &fileNamePath)
     inputFile.close();
     return triangulation;
 }
-

@@ -1,6 +1,5 @@
 #include "..\headers\Triangulations.h"
 
-
 Triangulations::Triangulations()
 {
 }
@@ -8,10 +7,10 @@ Triangulations::Triangulations()
 Triangulations::~Triangulations()
 {
 }
-std::vector<Point3D> &Triangulations::uniqueNormalPoints(){
+std::vector<Point3D> &Triangulations::uniqueNormalPoints()
+{
     return mUniqueNormalPoints;
 }
-
 
 std::vector<Point3D> &Triangulations::uniquePoints()
 {

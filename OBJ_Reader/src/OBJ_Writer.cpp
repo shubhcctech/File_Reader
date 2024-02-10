@@ -1,6 +1,6 @@
-#include "../headers/OBJ_Writer.h"
 #include <fstream>
 #include <iostream>
+#include "../headers/OBJ_Writer.h"
 
 OBJ_Writer::OBJ_Writer()
 {
@@ -22,7 +22,6 @@ Triangulations OBJ_Writer::objWrite(const std::string &filePathName, Triangulati
 
     for (const Triangle &triangles : triangles)
     {
-
         outputFile << points[triangles.index1()].X() << " " << points[triangles.index1()].Y() << " " << points[triangles.index1() ].Z() << std::endl;
         outputFile << points[triangles.index2()].X() << " " << points[triangles.index2()].Y() << " " << points[triangles.index2() ].Z() << std::endl;
         outputFile << points[triangles.index3()].X() << " " << points[triangles.index3()].Y() << " " << points[triangles.index3() ].Z() << std::endl;

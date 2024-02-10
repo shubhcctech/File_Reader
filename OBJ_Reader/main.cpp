@@ -1,6 +1,7 @@
+#include <iostream>
 #include"headers/OBJ_Reader.h"
 #include"headers/OBJ_Writer.h"
-#include <iostream>
+
 
 int main(){
             OBJ_Reader fileReader;

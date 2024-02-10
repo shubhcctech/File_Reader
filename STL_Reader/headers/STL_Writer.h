@@ -1,9 +1,8 @@
-#ifndef STL_WRITER_H
-#define STL_WRITER_H
+#pragma once
 
+#include <string>
 #include<vector>
 #include "Triangles.h"
-#include <string>
 #include "Triangulations.h"
 #include"Points.h"
 
@@ -14,8 +13,6 @@ class STL_Writer
     public:
         STL_Writer();
         ~STL_Writer();
-        Triangulations stlWrite(const std::string& fileNamePath,Triangulations &tringulation);
-
+        Triangulations &stlWrite(const std::string& fileNamePath,Triangulations &tringulation);
 };
 
-#endif

@@ -1,9 +1,7 @@
-#ifndef OBJ_TO_STL_WRITER_H
-#define OBJ_TO_STL_WRITER_H
-
+#pragma once
+#include <string>
 #include<vector>
 #include "Triangles.h"
-#include <string>
 #include "Triangulations.h"
 #include"Points.h"
 
@@ -15,8 +13,6 @@ class OBJToSTL_Writer
         OBJToSTL_Writer();
         ~OBJToSTL_Writer();
     
-        Triangulations objToStl(const std::string& filePathName, Triangulations &traingulation);
-        
+        Triangulations objToStl(const std::string& filePathName, Triangulations &traingulation);     
 };
 
-#endif
