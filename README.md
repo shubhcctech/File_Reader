@@ -1,11 +1,11 @@
-# File_Reader
+
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>File Reader and Writer</title>
+
 </head>
 <body>
 <h1>File Reader and Writer</h1>
